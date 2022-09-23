@@ -8,25 +8,35 @@ namespace ejemploClase3
 {
     internal class Cuenta
     {
-        int monto;
+        public int monto;
         public enum tipoExtraccion {
             cajeroHumano = 1,
             cajeroAutomatico = 2
         };
-        public enum tipoCuenta
-        {
-            corrientePesos = 1,
-            corrienteDolares = 2,
-            cajaAhorro = 3
-        };
+        
 
-        public void insercion(int monto)
+        public void insercion(int _monto)
         {
-
+            monto += _monto;
         }
-        public void extraccion(int monto, tipoExtraccion tipo)
+        public void extraccion(int _monto, tipoExtraccion tipo)
         {
-
+            if(tipo == tipoExtraccion.cajeroHumano)
+            {
+                if (_monto > monto)
+                {
+                    monto -= _monto;
+                }
+                else
+                {
+                    Console.WriteLine("Esta intentando sacar mas dinero del que tiene");
+                }
+            }
         }
+    }
+
+    class CuentaPesos : Cuenta
+    {
+
     }
 }
